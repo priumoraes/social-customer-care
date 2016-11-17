@@ -17,6 +17,8 @@
 var async = require('async');
 var extend = require('extend');
 var watson = require('watson-developer-cloud');
+//var HashSet = require('hashset-native');
+var fs = require('fs');
 
 var toneAnalyzer = watson.tone_analyzer({ version:'v3', version_date: '2016-05-19' });
 
@@ -31,6 +33,16 @@ var features = ['concepts', 'entities', 'keywords', 'taxonomy',
                 'doc-emotion', 'relations', 'doc-sentiment', 'typed-rels'].join(',');
 
 var responses = require('../data/default-responses');
+var wordsToAvoid = '/Users/priscillamoraes/git/social-customer-care/data/avoid-words.txt';
+
+//var avoidWordsSet = new HashSet.string();
+var avoidWordsSet = [];
+
+var array = fs.readFileSync(wordsToAvoid).toString().split("\n");
+for(i in array) {
+    avoidWordsSet.push(i);
+}
+
 
 /**
  * Clean the text removing symbols and numbers
@@ -41,6 +53,22 @@ function cleanText(text) {
   return text.replace(/\s\#/g, '')
     .replace(/\@\w\w+\s?/g, ' ')
     .replace(/[A-Za-z]+:\/\/[A-Za-z0-9]+.[A-Za-z0-9-_:%&~?/.=]+/g, '').trim();
+}
+
+/**
+ * Checks if the tweet contains inappropriate words or if it is safe
+ * @param  {String} text The Tweet text
+ * @return {Boolean}      True if the tweet is safe; false otherwise
+ */
+function safeText(text) {
+  var words = text.split(" ");
+  for(word in words){
+    //if (word in avoidWordsSet){
+    if (avoidWordsSet.indexOf(word) > -1){
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -78,6 +106,9 @@ var getSentiment = function(sentiment) {
  * @return {undefined}
  */
 module.exports = function processTweet(tweet, callback) {
+  if (!(safeText(tweet))){
+    tweet = "This tweet has been removed";
+  }
   tweet.cleaned_text = cleanText(tweet.text)
 
   if (tweet.in_reply_to_status_id !== null ||

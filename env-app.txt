@@ -1,0 +1,98 @@
+Getting env variables for app instructiontest-social-customer-care in org skitid@us.ibm.com / space dev as psmoraes@us.ibm.com...
+OK
+
+System-Provided:
+{
+ "VCAP_SERVICES": {
+  "natural_language_classifier": [
+   {
+    "credentials": {
+     "password": "vXhVEY1fr4qR",
+     "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+     "username": "9b918752-494a-4500-a3de-5bb65066b083"
+    },
+    "label": "natural_language_classifier",
+    "name": "classifier-service",
+    "plan": "standard",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "watson",
+     "ibm_created",
+     "ibm_dedicated_public"
+    ]
+   }
+  ],
+  "personality_insights": [
+   {
+    "credentials": {
+     "password": "wtJI2PtQQx1n",
+     "url": "https://gateway.watsonplatform.net/personality-insights/api",
+     "username": "6b93ae44-97f8-4f32-9438-03949e01fcee"
+    },
+    "label": "personality_insights",
+    "name": "personality-insights-service",
+    "plan": "tiered",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "watson",
+     "ibm_created",
+     "ibm_dedicated_public"
+    ]
+   }
+  ],
+  "tone_analyzer": [
+   {
+    "credentials": {
+     "password": "BWpFg6zt051R",
+     "url": "https://gateway.watsonplatform.net/tone-analyzer/api",
+     "username": "d5b24ebb-d68f-4ed3-b577-c920625766f3"
+    },
+    "label": "tone_analyzer",
+    "name": "tone-analyzer-service",
+    "plan": "standard",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "watson",
+     "ibm_created",
+     "ibm_dedicated_public"
+    ]
+   }
+  ]
+ }
+}
+
+{
+ "VCAP_APPLICATION": {
+  "application_id": "00206267-4004-45e2-8a2b-6d54c3cf1157",
+  "application_name": "instructiontest-social-customer-care",
+  "application_uris": [
+   "instructiontest-social-customer-care.mybluemix.net"
+  ],
+  "application_version": "c53a6650-0c1c-4790-9175-f797ad07a319",
+  "limits": {
+   "disk": 1024,
+   "fds": 16384,
+   "mem": 512
+  },
+  "name": "instructiontest-social-customer-care",
+  "space_id": "b900f7a0-d067-42b3-8538-36cab0fa3440",
+  "space_name": "dev",
+  "uris": [
+   "instructiontest-social-customer-care.mybluemix.net"
+  ],
+  "users": null,
+  "version": "c53a6650-0c1c-4790-9175-f797ad07a319"
+ }
+}
+
+No user-defined env variables have been set
+
+Running Environment Variable Groups:
+BLUEMIX_REGION: ibm:yp:us-south
+
+Staging Environment Variable Groups:
+BLUEMIX_REGION: ibm:yp:us-south
+
